@@ -15,7 +15,7 @@ import junit.framework.TestCase;
 public class AppTest extends TestCase {
 
     private final App app = new App();
-    private static String latestReferenceCode;
+    static String latestReferenceCode;
 
     public void test001Properties() {
         assertNotNull("Referral code should not be null.", app.referralCode());
