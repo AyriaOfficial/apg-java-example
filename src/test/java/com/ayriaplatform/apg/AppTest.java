@@ -70,4 +70,23 @@ public class AppTest extends TestCase {
         System.out.println(String.format("Payment created at %s, payment url is: %s", dto.getCreatedDate(), dto.getPaymentUrl()));
     }
 
+    public void test006CancelPayment() {
+        final AyriaPaymentV1CancelCommand cmd = new AyriaPaymentV1CancelCommand(latestReferenceCode, "قیمت اشتباه");
+        final ResponseEntity<AyriaPaymentV1DTO> res = app.cancelPayment(cmd);
+        assertTrue("Status should be 200", res.getStatusCode().equals(HttpStatus.OK));
+        final AyriaPaymentV1DTO dto = res.getBody();
+        assertTrue(dto.isCanceled());
+        assertEquals("قیمت اشتباه", dto.getCancelDescription());
+    }
+
+    public void test007CancelPaymentInvalid() {
+        final AyriaPaymentV1CancelCommand cmd = new AyriaPaymentV1CancelCommand(latestReferenceCode, "قیمت اشتباه");
+        try {
+            app.cancelPayment(cmd);
+            fail("Already canceled payment can't be canceled.");
+        } catch (HttpClientErrorException e) {
+            assertTrue("Status should be 400", e.getStatusCode().equals(HttpStatus.BAD_REQUEST));
+        }
+    }
+
 }

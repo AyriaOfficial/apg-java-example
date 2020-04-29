@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 
 public class AyriaPaymentV1Command {
 
-    private Long referralCode;
-    private BigDecimal amount;
-    private String payerMobile;
+    private Long referralCode;  // Required
+    private BigDecimal amount;  // Required
+    private String payerMobile; // Required
     private String payerName;
     private String description;
     private String paymentNumber;

@@ -39,6 +39,10 @@ public class App {
         return restTemplate.getForEntity(f("%s/get/%s", apgEndpoint(), referenceCode), AyriaPaymentV1DTO.class);
     }
 
+    public ResponseEntity<AyriaPaymentV1DTO> cancelPayment(AyriaPaymentV1CancelCommand cmd) {
+        return restTemplate.postForEntity(f("%s/cancel", apgEndpoint()), cmd, AyriaPaymentV1DTO.class);
+    }
+
     public Long referralCode() {
         return Long.valueOf(properties.getProperty(Constants.REFERRAL_CODE));
     }

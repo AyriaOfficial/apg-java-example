@@ -18,6 +18,7 @@ public class AyriaPaymentV1DTO {
     private boolean canceled;
     private String createdDate;
     private String paymentUrl;
+    private String cancelDescription;
 
     public BigDecimal getAmount() {
         return amount;
@@ -129,6 +130,14 @@ public class AyriaPaymentV1DTO {
 
     public void setPaymentUrl(String paymentUrl) {
         this.paymentUrl = paymentUrl;
+    }
+
+    public String getCancelDescription() {
+        return cancelDescription;
+    }
+
+    public void setCancelDescription(String cancelDescription) {
+        this.cancelDescription = cancelDescription;
     }
 
 }
