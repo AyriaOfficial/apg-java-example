@@ -55,6 +55,8 @@
         <configuration>
           <runOrder>alphabetical</runOrder>
           <parallel>none</parallel>
+          <parallelOptimized>false</parallelOptimized>
+          <forkCount>0</forkCount>
         </configuration>
       </plugin>
       <plugin>
