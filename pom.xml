@@ -8,20 +8,15 @@
   <name>apg-java-example</name>
   <url>https://ayriaplatform.com</url>
   <properties>
-    <REFERRAL_CODE>100120</REFERRAL_CODE><!-- Change me -->
+    <WALLET_IDENTITY>10012036</WALLET_IDENTITY><!-- Change me -->
+    <APG_API_KEY>APG3oNq6T4xJTzPiyaLRBIQqfW8VhswK4a79zGxG1nPM7pPtPO5JXUqooEtxQUxl</APG_API_KEY><!-- Change me -->
     <PAYER_MOBILE_FOR_TEST>09120000000</PAYER_MOBILE_FOR_TEST><!-- Change me -->
-    <APG_ENDPOINT>https://dev.ayria.club/apg/v1</APG_ENDPOINT><!-- Use https://api.ayria.club/apg/v1 for production -->
   </properties>
   <dependencies>
     <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-web</artifactId>
-      <version>5.2.5.RELEASE</version>
-    </dependency>
-    <dependency>
-      <groupId>com.google.code.gson</groupId>
-      <artifactId>gson</artifactId>
-      <version>2.8.6</version>
+      <groupId>io.github.ayriaofficial</groupId>
+      <artifactId>apg-sdk-java</artifactId>
+      <version>1.1</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>

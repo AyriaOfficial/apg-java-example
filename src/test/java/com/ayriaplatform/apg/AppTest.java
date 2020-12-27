@@ -48,9 +48,9 @@ public class AppTest {
     @Order(3)
     public void test003CreateValidCommand() {
         final AyriaPaymentV1Command cmd = new AyriaPaymentV1Command(app.referralCode(), new BigDecimal("1000"), app.payerMobile());
-        final ResponseEntity<String> res = app.createPayment(cmd);
+        final ResponseEntity<AyriaPaymentV1DTO> res = app.createPayment(cmd);
         assertTrue(res.getStatusCode().equals(HttpStatus.CREATED), "Status should be 201");
-        latestReferenceCode = res.getBody();
+        latestReferenceCode = res.getBody().getReferenceCode();
         assertTrue(StringUtils.hasText(latestReferenceCode), "Reference code should not be empty");
     }
 
@@ -62,9 +62,9 @@ public class AppTest {
         cmd.setPayerName("رستم دستان");
         cmd.setPaymentNumber("123456");
         cmd.setExtraData("{\"product\": \"clock\"}");
-        final ResponseEntity<String> res = app.createPayment(cmd);
+        final ResponseEntity<AyriaPaymentV1DTO> res = app.createPayment(cmd);
         assertTrue(res.getStatusCode().equals(HttpStatus.CREATED), "Status should be 201");
-        latestReferenceCode = res.getBody();
+        latestReferenceCode = res.getBody().getReferenceCode();
         assertTrue(StringUtils.hasText(latestReferenceCode), "Reference code should not be empty");
     }
 
@@ -85,7 +85,7 @@ public class AppTest {
      // assertEquals("آیریا", dto.getPayeeName());  // Expected value depends to App#referralCode()
         assertFalse(dto.isPaid());
         assertFalse(dto.isCanceled());
-        System.out.println(String.format("Payment created at %s, payment url is: %s", dto.getCreatedDate(), dto.getPaymentUrl().replaceAll("api.ayria.club", "dev.ayria.club")));
+        System.out.println(String.format("Payment created at %s, payment url is: %s", dto.getCreatedDate(), app.isProduction() ? dto.getPaymentUrl() : dto.getPaymentUrl().replaceAll("api.ayria.club", "dev.ayria.club")));
     }
 
     @Test
